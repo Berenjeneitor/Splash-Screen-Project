@@ -1,8 +1,11 @@
 package com.example.splash2;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,5 +32,10 @@ public class MenuScreenActivity extends AppCompatActivity {
                 getResources().getString(R.string.menu_item_help)};
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);
         menuList.setAdapter(adapt);
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+                Toast.makeText(MenuScreenActivity.this, "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
